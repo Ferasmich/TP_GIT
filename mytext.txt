@@ -1,0 +1,1 @@
+I have create new repository named, TP_GIT and created new file named mytext.txt on it
