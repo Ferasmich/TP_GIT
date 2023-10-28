@@ -1,2 +1,3 @@
 I have create new repository named, TP_GIT and created new file named mytext.txt on it
 I have add some text for git push
+the text are added to make pull request from github.
