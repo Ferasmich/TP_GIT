@@ -1,0 +1,460 @@
+﻿TP : GIT
+Feras MICHAEL
+Objecf : Ce TP vise à vous familiariser avec les commandes de base de Git et à vous aider à comprendre le flux de travail de base
+pour gérer un projet Git.
+Prérequis :
+- Git doit être installé sur votre système.
+- Vous devez avoir un éditeur de texte (par exemple, Visual Studio Code) installé sur votre système.
+Exercices :
+
+
+1. Configuraon de Git
+- Si ce n’est déjà fait, configurez votre nom d'ulisateur Git et votre adresse e-mail.
+
+
+git config --global user.name "my_name"
+git config --global user.email "my_mail@email.com"
+
+
+2. Créaon d'un dépôt Git
+- Créez un nouveau répertoire sur votre ordinateur.
+- Naviguez dans ce répertoire à l'aide du terminal.
+- Inialisez y un dépôt Git.
+
+
+➜  TP mkdir TP_GIT
+➜  TP cd TP_GIT 
+➜  TP_GIT git init
+Initialized empty Git repository in /Users/ferasmich/Documents/GRETA/TP/TP_GIT/.git/
+
+
+
+
+3. Ajout de fichiers au dépôt
+- Créez un fichier texte (par exemple, `monfichier.txt`) dans le répertoire du projet.
+- Ajouter ce fichier à la zone de préparaon (staging area).
+- vérifiez l'état des fichiers.
+
+
+➜  TP_GIT git:(main) touch myfile.txt
+➜  TP_GIT git:(main) ✗ git status
+On branch main
+
+
+No commits yet
+
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        myfile.txt
+
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  TP_GIT git:(main) ✗ git add myfile.txt
+➜  TP_GIT git:(main) ✗ git status
+On branch main
+
+
+No commits yet
+
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   myfile.txt
+
+
+
+
+4. Créaon d'un commit
+- Créer un commit "Premier commit"` avec votre fichier ajouté.
+- Aﬃcher l'historique des commits.
+
+
+➜  TP_GIT git:(main) ✗ git commit -m "First commit"
+[main (root-commit) 020a447] First commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 myfile.txt
+
+
+➜  TP_GIT git:(main) git log
+
+
+commit 020a44747233984ac630d973bcb4d7ecd34896bc (HEAD -> main)
+Author: “Ferasmich” <“feras.mich@gmail.com”>
+Date:   Sat Oct 28 18:27:07 2023 +0200
+
+
+    First commit
+
+
+
+
+5. Modificaon de fichiers
+- Modifiez le contenu de `monfichier.txt`.
+- montrez les modificaons apportées. (Capture d’écran)
+
+
+➜  TP_GIT git:(main) echo 'I have made some modification in myfile' >> myfile.txt
+➜  TP_GIT git:(main) ✗ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   myfile.txt
+
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+
+
+
+
+
+
+6. Créaon d'un deuxième commit
+- Ajoutez les modificaons à la zone de préparaon.
+- Validez les nouvelles modificaons.
+
+
+➜  TP_GIT git:(main) ✗ git add .
+➜  TP_GIT git:(main) ✗ git commit -m "I have add some text in myfile"
+[main 39c5aec] I have add some text in myfile
+ 1 file changed, 1 insertion(+)
+
+
+
+
+7. Modificaon d'un commit
+Metez à jour votre dernière validaon en modifiant le message associé. Expliquez que cela permet de corriger un message de
+commit incorrect.
+
+
+➜  TP_GIT git:(main) git commit --amend -m "I have corrected my commit message"
+[main 97904b3] I have corrected my commit message
+ Date: Sat Oct 28 18:32:31 2023 +0200
+ 1 file changed, 1 insertion(+)
+
+
+
+
+8. Suppression d'un commit
+Supprimez le dernier commit. Mise en garde contre l'ulisaon prudente de cete commande, car elle peut supprimer
+définivement des données.
+
+
+➜  TP_GIT git:(main) git reset --hard HEAD~1
+HEAD is now at 020a447 First commit
+➜  TP_GIT git:(main) 
+➜  TP_GIT git:(main) git log
+
+
+commit 020a44747233984ac630d973bcb4d7ecd34896bc (HEAD -> main)
+Author: “Ferasmich” <“feras.mich@gmail.com”>
+Date:   Sat Oct 28 18:27:07 2023 +0200
+
+
+    First commit
+
+
+
+
+
+
+9. Créaon d'une équete
+Créez une équete (tag) pour marquer un point spécifique de l'historique des commits. Ajoutez une brève explicaon de
+l’importance de l’équete.
+
+
+➜  TP_GIT git:(main) git tag -a tag_mark -m "mark a specific point in repository's history"
+
+
+
+
+
+
+10. Branches
+- Créez une nouvelle branche nommée « ma_branche ».
+- Basculez vers la nouvelle branche « ma_branche ».- Modifiez un fichier et créez un commit sur cete branche.
+
+
+➜  TP_GIT git:(main) git branch my_branch
+➜  TP_GIT git:(main) git switch my_branch
+Switched to branch 'my_branch'
+➜  TP_GIT git:(my_branch) echo "I have add some text in myfile in my_branch" >> myfile.txt
+➜  TP_GIT git:(my_branch) ✗ git add .
+➜  TP_GIT git:(my_branch) ✗ git commit -m "I have add text in myfile in my branch" 
+[my_branch e63459a] I have add text in myfile in my branch
+ 1 file changed, 1 insertion(+)
+
+
+
+
+
+
+
+
+
+
+
+
+11. Fusion de branches
+- Revenez à la branche principale (généralement nommée `master`).
+- Fusionnez la branche créée précédemment.
+
+
+➜  TP_GIT git:(my_branch) git switch main
+Switched to branch 'main'
+➜  TP_GIT git:(main) git merge my_branch
+Updating 14620a7..e63459a
+Fast-forward
+ myfile.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+
+
+
+
+
+12. Suppression de fichiers
+- Supprimez un fichier de votre répertoire.
+- Validez la suppression.
+
+
+➜  TP_GIT git:(main) touch unwanted.txt                                  
+➜  TP_GIT git:(main) ✗ echo "I have add some text in unwanted file" >> unwanted.txt
+➜  TP_GIT git:(main) ✗ ls             
+myfile.txt   unwanted.txt
+➜  TP_GIT git:(main) ✗ git unwanted.txt
+git: 'unwanted.txt' is not a git command. See 'git --help'.
+➜  TP_GIT git:(main) ✗ git rm unwanted.txt
+fatal: pathspec 'unwanted.txt' did not match any files
+➜  TP_GIT git:(main) ✗ git add .       
+➜  TP_GIT git:(main) ✗ git commit -m "Add unwanted file"
+[main d2b094d] Add unwanted file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 unwanted.txt
+➜  TP_GIT git:(main) git rm unwanted.txt
+rm 'unwanted.txt'
+➜  TP_GIT git:(main) ✗ ls
+myfile.txt
+➜  TP_GIT git:(main) ✗ git checkout
+D       unwanted.txt
+➜  TP_GIT git:(main) ✗ 
+  
+  
+  
+  
+  
+
+
+
+13. Récupéraon d'un projet Git
+- Clônez un dépôt Git existant à parr d'un référenel distant.
+
+
+➜  TP git clone https://github.com/Ferasmich/Greta.git
+Cloning into 'Greta'...
+remote: Enumerating objects: 33, done.
+remote: Counting objects: 100% (33/33), done.
+remote: Compressing objects: 100% (22/22), done.
+remote: Total 33 (delta 5), reused 15 (delta 3), pack-reused 0
+Receiving objects: 100% (33/33), 5.92 KiB | 5.92 MiB/s, done.
+Resolving deltas: 100% (5/5), done.
+
+
+
+
+
+
+
+
+14. Suppression d'un fichier du dépôt (untrack)
+Supprimez un fichier du répertoire de travail, puis cessez de suivre ce fichier sans le supprimer définivement. Expliquez
+comment cete commande arrête de suivre le fichier dans les commits futurs, mais le conserve localement.
+Cet exercice permet d'expliquer comment rerer un fichier de la zone de préparaon (staging area) et d'arrêter de suivre les
+modificaons de ce fichier dans les commits futurs, tout en le conservant localement.
+
+
+➜  TP cd Greta
+➜  Greta git:(main) ls
+checkclone.txt gitdemo        gitdemo2       index.html     script.js
+➜  Greta git:(main) git clean -f gitdemo
+➜  Greta git:(main) git clean -n
+➜  Greta git:(main) git log --all --full-history --name-only
+➜  Greta git:(main) ls
+checkclone.txt gitdemo        gitdemo2       index.html     script.js
+
+
+
+
+
+
+15. Ulisaon de l'opon –so lors de la suppression d'un commit
+Créez un commit contenant quelques modificaons.
+Uliser la commande git pour annuler le dernier commit—so dans cete commande.
+
+
+➜  Greta git:(main) echo "I have made some changes in my checkclone.txt
+dquote> " >> checkclone.txt
+➜  Greta git:(main) ✗ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   checkclone.txt
+
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  Greta git:(main) ✗ git add .
+➜  Greta git:(main) ✗ git commit -m "this process is going to undo by -soft"
+[main 2b2dc99] this process is going to undo by -soft
+ 1 file changed, 2 insertions(+)
+➜  Greta git:(main) git reset --soft HEAD~1
+➜  Greta git:(main) ✗ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   checkclone.txt
+
+
+➜  Greta git:(main) ✗ git reset --hard HEAD
+HEAD is now at ad1c519 file index html
+
+
+Warning: the following does a git reset --hard: make sure to use git stash first if you want to save your currently modified files.
+
+
+16. Pousser vers un référenel distant
+- Créez un compte sur une plateforme d'hébergement GitHub si ce n’est déjà fait.
+- Créez un nouveau référenel sur la plateforme.
+- liez votre dépôt local à un référenel distant.
+- Pousser votre code vers le référenel distant.
+
+
+➜  TP ls
+Greta     TP_GIT    TP_GITHub
+➜  TP cd TP_GITHub 
+➜  TP_GITHub git:(main) ls
+mytext.txt
+➜  TP_GITHub git:(main) echo "I have add some text for git push" >> mytext.txt 
+➜  TP_GITHub git:(main) ✗ git add .
+➜  TP_GITHub git:(main) ✗ git commit -m "make changes in mytext to push"
+[main 6361ed9] make changes in mytext to push
+ 1 file changed, 1 insertion(+)
+➜  TP_GITHub git:(main) git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+
+nothing to commit, working tree clean
+➜  TP_GITHub git:(main) git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 330 bytes | 330.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/Ferasmich/TP_GITHub.git
+   d94d451..6361ed9  main -> main
+17. Clonage d'une branche distante
+Clonez une branche distante spécifique (au lieu de tout le dépôt).
+Expliquez comment cela peut être ule pour travailler sur une seule branche.
+
+
+➜  TP git clone --branch specific_branch https://github.com/Ferasmich/TP_GITHub.git
+Cloning into 'TP_GITHub'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 6 (delta 1), reused 4 (delta 1), pack-reused 0
+Receiving objects: 100% (6/6), done.
+Resolving deltas: 100% (1/1), done.
+
+
+Cloner une branche distante spécifique pour travailler sur une seule branche peut être utile pour plusieurs raisons :
+
+
+Performances : cela peut améliorer les performances de votre référentiel local, surtout si le référentiel est volumineux. En effet, vous clonerez uniquement la branche sur laquelle vous devez travailler, plutôt que l'intégralité du référentiel.
+
+
+Concentration : cela peut vous aider à vous concentrer sur votre travail en limitant la portée de votre référentiel local à la branche sur laquelle vous travaillez. Cela peut être particulièrement utile si vous travaillez sur une fonctionnalité complexe ou une correction de bug.
+
+
+Isolation : cela peut aider à isoler vos modifications du reste du référentiel. Cela peut être utile si vous travaillez sur une modification radicale ou si vous n'êtes pas encore prêt à transférer vos modifications vers le référentiel distant.
+
+
+
+
+
+
+18. Tirer les dernières modificaons du référenel distant
+- rez les dernières modificaons du référenel distant vers votre copie locale.
+
+
+➜  TP_GITHub git:(specific_branch) git pull https://github.com/Ferasmich/TP_GITHub.git specific_branch
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 711 bytes | 142.00 KiB/s, done.
+From https://github.com/Ferasmich/TP_GITHub
+ * branch            specific_branch -> FETCH_HEAD
+Updating 6361ed9..281f704
+Fast-forward
+ mytext.txt | 1 +
+ 1 file changed, 1 insertion(+)
+➜  TP_GITHub git:(specific_branch) git fetch
+From https://github.com/Ferasmich/TP_GITHub
+   6361ed9..281f704  specific_branch -> origin/specific_branch
+
+
+
+
+
+
+19. Créer deux nouvelles branches
+Ulisez une commande GIT pour metre à jour votre copie locale avec les nouvelles branches
+
+
+➜  TP_GITHub git:(specific_branch) git branch branch1
+➜  TP_GITHub git:(specific_branch) git branch branch2
+➜  TP_GITHub git:(specific_branch) git merge main/branch1
+merge: main/branch1 - not something we can merge
+➜  TP_GITHub git:(specific_branch) git merge specific_branch/branch1
+merge: specific_branch/branch1 - not something we can merge
+➜  TP_GITHub git:(specific_branch) git switch branch1
+Switched to branch 'branch1'
+➜  TP_GITHub git:(branch1) git merge specific_branch
+Already up to date.
+➜  TP_GITHub git:(branch1) git checkout
+➜  TP_GITHub git:(branch1) ls          
+mytext.txt
+➜  TP_GITHub git:(branch1) git switch branch2
+Switched to branch 'branch2'
+➜  TP_GITHub git:(branch2) ls
+mytext.txt
+➜  TP_GITHub git:(branch2) 
+➜  TP_GITHub git:(branch2) git switch specific_branch
+Switched to branch 'specific_branch'
+Your branch is up to date with 'origin/specific_branch'.
+➜  TP_GITHub git:(specific_branch) git checkout specific_branch
+Already on 'specific_branch'
+Your branch is up to date with 'origin/specific_branch'.
+
+
+
+
+
+
+20. Clôture du TP
+- Résumez les étapes que vous avez suivies pour gérer un projet Git dans un fichier texte.
+- Créez un commit pour enregistrer ce résumé.
